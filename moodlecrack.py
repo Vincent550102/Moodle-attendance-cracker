@@ -28,14 +28,15 @@ class Crack():
         url = baseurl + '?qrpass={}&sessid={}'
         self._urls = [url.format(page, SESSID) for page in range(1000, ENUM_MAXQRPASS)] 
         self._start_time = time.time()
+        
 
     @staticmethod
     def scrape(url):
         r = requests.get(url)
         global cnt
         print('\r' + '[Progress]:[%s%s]%.2f%%;' % (
-            '█' * int((cnt:=cnt+1)*20/(ENUM_MAXQRPASS-start_enum)), ' ' * (20-int(cnt*20/(ENUM_MAXQRPASS-start_enum))),
-            float(cnt/(ENUM_MAXQRPASS-start_enum)*100)), end='')
+            '█' * int((cnt:=cnt+1)*20/(ENUM_MAXQRPASS-start_enum-1)), ' ' * (20-int(cnt*20/(ENUM_MAXQRPASS-start_enum-1))),
+            float(cnt/(ENUM_MAXQRPASS-start_enum-1)*100)), end='')
         if(r.status_code != 404):
             print("\r[+]", r.status_code, url)
         time.sleep(0.5)
