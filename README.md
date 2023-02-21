@@ -1,5 +1,5 @@
 # Moodle-attendance-cracker
-
+使用前請先確認各服務的合理使用規範
 ## 如何使用
 ```
 python moodlecrack.py [baseurl] [sessid] [maxworker] [enummaxqrpass]
@@ -17,4 +17,3 @@ TODO
 
 TODO
 
-使用前請先確認各服務的合理使用規範
