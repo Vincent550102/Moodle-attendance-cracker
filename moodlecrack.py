@@ -25,7 +25,7 @@ class Crack():
     def __init__(self, baseurl, SESSID, MAX_WORKERS):
         self._MAX_WORKERS = int(MAX_WORKERS)
         url = baseurl + '?qrpass={}&sessid={}'
-        self._urls = [url.format(page, SESSID) for page in range(1, ENUM_MAXQRPASS)] 
+        self._urls = [url.format(page, SESSID) for page in range(1000, ENUM_MAXQRPASS)] 
         self._start_time = time.time()
 
     @staticmethod
