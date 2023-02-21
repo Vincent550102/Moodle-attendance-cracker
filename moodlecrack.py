@@ -20,6 +20,7 @@ title = '''
 
 cnt = 0
 ENUM_MAXQRPASS = None
+start_enum = 1000
 
 class Crack():
     def __init__(self, baseurl, SESSID, MAX_WORKERS):
@@ -33,8 +34,8 @@ class Crack():
         r = requests.get(url)
         global cnt
         print('\r' + '[Progress]:[%s%s]%.2f%%;' % (
-            '█' * int((cnt:=cnt+1)*20/ENUM_MAXQRPASS), ' ' * (20-int(cnt*20/ENUM_MAXQRPASS)),
-            float(cnt/ENUM_MAXQRPASS*100)), end='')
+            '█' * int((cnt:=cnt+1)*20/(ENUM_MAXQRPASS-start_enum)), ' ' * (20-int(cnt*20/(ENUM_MAXQRPASS-start_enum))),
+            float(cnt/(ENUM_MAXQRPASS-start_enum)*100)), end='')
         if(r.status_code != 404):
             print("\r[+]", r.status_code, url)
         time.sleep(0.5)
@@ -56,5 +57,5 @@ if __name__ == '__main__':
     ENUM_MAXQRPASS = int(sys.argv[-1])
     crack = Crack(*sys.argv[1:-1])
     crack.run()
-    print(f"{crack.waste_time} 秒完成 {ENUM_MAXQRPASS} 次的找尋隨機出席代碼完成")
+    print(f"{crack.waste_time} 秒完成 {(ENUM_MAXQRPASS-start_enum)} 次的找尋隨機出席代碼完成")
     
