@@ -19,7 +19,7 @@ title = '''
 '''
 
 cnt = 0
-ENUM_MAXQRPASS = None
+ENUM_MAXQRPASS = 10000
 start_enum = 1000
 
 class Crack():
