@@ -1,0 +1,29 @@
+name: Package Application with Pyinstaller
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@python3-10-pyinstaller-5-3
+      with:
+        path: .
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-linux@python3.10
+      with:
+        path: .
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "dist/windows/MoodleAttendanceCracker.exe,dist/linux/MoodleAttendanceCracker"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
